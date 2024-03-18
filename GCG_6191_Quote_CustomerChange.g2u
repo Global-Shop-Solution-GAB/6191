@@ -1,0 +1,760 @@
+Program.Sub.ScreenSU.Start
+Gui.frmQuoteUpdate..create
+Gui.frmQuoteUpdate..caption("Quote Customer Update")
+Gui.frmQuoteUpdate..size(5200,3795)
+Gui.frmQuoteUpdate..minx(0)
+Gui.frmQuoteUpdate..miny(0)
+Gui.frmQuoteUpdate..position(0,0)
+Gui.frmQuoteUpdate..event(UnLoad,Unload_Form)
+Gui.frmQuoteUpdate..forecolor(0)
+Gui.frmQuoteUpdate..fontstyle(False,False,False,False)
+Gui.frmQuoteUpdate..BackColor(-2147483633)
+Gui.frmQuoteUpdate..mousepointer(0)
+Gui.frmQuoteUpdate.lblNewCust.create(label,"Select New Customer:",True,1800,255,1,630,1470,True,0,Arial,8,-2147483633,0)
+Gui.frmQuoteUpdate.lblNewCust.defaultvalue("")
+Gui.frmQuoteUpdate.txtNewCust.create(textbox,"",True,1245,300,0,2505,1395,True,0,Arial,8,-2147483643,1)
+Gui.frmQuoteUpdate.txtNewCust.maxLength(6)
+Gui.frmQuoteUpdate.txtNewCust.event(LostFocus,txtNewCust_LostFocus)
+Gui.frmQuoteUpdate.txtNewCust.defaultvalue("")
+Gui.frmQuoteUpdate.txtNewCust.tabstop(True)
+Gui.frmQuoteUpdate.txtNewCust.tabindex(3)
+Gui.frmQuoteUpdate.lblOldCust.create(label,"Current Customer:",True,1590,255,1,630,990,True,0,Arial,8,-2147483633,0)
+Gui.frmQuoteUpdate.lblOldCust.defaultvalue("")
+Gui.frmQuoteUpdate.txtOldCust.create(textbox,"",True,1245,300,0,2505,900,False,0,Arial,8,-2147483643,1)
+Gui.frmQuoteUpdate.txtOldCust.maxLength(6)
+Gui.frmQuoteUpdate.txtOldCust.defaultvalue("")
+Gui.frmQuoteUpdate.lblNewShip.create(label,"Ship To ID:",True,1425,255,1,630,1980,True,0,Arial,8,-2147483633,0)
+Gui.frmQuoteUpdate.lblNewShip.defaultvalue("")
+Gui.frmQuoteUpdate.cmdCustBrws.create(button)
+Gui.frmQuoteUpdate.cmdCustBrws.caption("^")
+Gui.frmQuoteUpdate.cmdCustBrws.size(300,300)
+Gui.frmQuoteUpdate.cmdCustBrws.position(3800,1400)
+Gui.frmQuoteUpdate.cmdCustBrws.event(Click,cmdCustBrws_click)
+Gui.frmQuoteUpdate.cmdCustBrws.defaultvalue("")
+Gui.frmQuoteUpdate.cmdCustBrws.tabstop(True)
+Gui.frmQuoteUpdate.cmdCustBrws.tabindex(4)
+Gui.frmQuoteUpdate.txtNewShipTo.create(textbox,"",True,1245,300,0,2505,1905,False,0,Arial,8,-2147483643,1)
+Gui.frmQuoteUpdate.txtNewShipTo.maxLength(6)
+Gui.frmQuoteUpdate.txtNewShipTo.event(LostFocus,txtShipTo_LostFocus)
+Gui.frmQuoteUpdate.txtNewShipTo.defaultvalue("")
+Gui.frmQuoteUpdate.txtNewShipTo.tabstop(True)
+Gui.frmQuoteUpdate.txtNewShipTo.tabindex(5)
+Gui.frmQuoteUpdate.lblQuoteNo.create(label,"Enter Quote:",True,1530,255,1,630,480,True,0,Arial,8,-2147483633,0)
+Gui.frmQuoteUpdate.lblQuoteNo.defaultvalue("")
+Gui.frmQuoteUpdate.txtQuoteNo.create(textbox,"",True,1245,300,0,2505,405,True,0,Arial,8,-2147483643,1)
+Gui.frmQuoteUpdate.txtQuoteNo.maxLength(7)
+Gui.frmQuoteUpdate.txtQuoteNo.event(LostFocus,txtOrdNo_LostFocus)
+Gui.frmQuoteUpdate.txtQuoteNo.defaultvalue("")
+Gui.frmQuoteUpdate.txtQuoteNo.tabstop(True)
+Gui.frmQuoteUpdate.txtQuoteNo.tabindex(1)
+Gui.frmQuoteUpdate.cmdQuoteNo.create(button)
+Gui.frmQuoteUpdate.cmdQuoteNo.caption("^")
+Gui.frmQuoteUpdate.cmdQuoteNo.size(300,300)
+Gui.frmQuoteUpdate.cmdQuoteNo.position(3800,400)
+Gui.frmQuoteUpdate.cmdQuoteNo.event(Click,cmdQuoteNo_click)
+Gui.frmQuoteUpdate.cmdQuoteNo.defaultvalue("")
+Gui.frmQuoteUpdate.cmdQuoteNo.tabstop(True)
+Gui.frmQuoteUpdate.cmdQuoteNo.tabindex(2)
+Gui.frmQuoteUpdate.cmdShipTo.create(button)
+Gui.frmQuoteUpdate.cmdShipTo.caption("^")
+Gui.frmQuoteUpdate.cmdShipTo.size(300,300)
+Gui.frmQuoteUpdate.cmdShipTo.position(3800,1900)
+Gui.frmQuoteUpdate.cmdShipTo.enabled(False)
+Gui.frmQuoteUpdate.cmdShipTo.event(Click,cmdShipTo_click)
+Gui.frmQuoteUpdate.cmdShipTo.defaultvalue("")
+Gui.frmQuoteUpdate.cmdShipTo.tabstop(True)
+Gui.frmQuoteUpdate.cmdShipTo.tabindex(6)
+Gui.frmQuoteUpdate.cmdUpdate.create(button)
+Gui.frmQuoteUpdate.cmdUpdate.caption("Update")
+Gui.frmQuoteUpdate.cmdUpdate.size(900,350)
+Gui.frmQuoteUpdate.cmdUpdate.position(1400,2500)
+Gui.frmQuoteUpdate.cmdUpdate.event(Click,cmdUpdate_click)
+Gui.frmQuoteUpdate.cmdUpdate.defaultvalue("")
+Gui.frmQuoteUpdate.cmdUpdate.tabstop(True)
+Gui.frmQuoteUpdate.cmdUpdate.tabindex(7)
+Gui.frmQuoteUpdate.cmdCancel.create(button)
+Gui.frmQuoteUpdate.cmdCancel.caption("Cancel")
+Gui.frmQuoteUpdate.cmdCancel.size(900,350)
+Gui.frmQuoteUpdate.cmdCancel.position(2650,2500)
+Gui.frmQuoteUpdate.cmdCancel.event(Click,Unload_Form)
+Gui.frmQuoteUpdate.cmdCancel.defaultvalue("")
+Gui.frmQuoteUpdate.cmdCancel.tabstop(True)
+Gui.frmQuoteUpdate.cmdCancel.tabindex(8)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.Global.sNewCustomer.Declare(String)
+Variable.Global.sOldCustomer.Declare(String)
+Variable.Global.sQuoteNo.Declare(String)
+Variable.Global.sOrdShipToID.Declare(String)
+Variable.Global.sShipTo.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+V.Local.sIcon.Declare(String)
+
+'This program will allow the user from a custom menu item to change the Customer on a Quote
+
+F.ODBC.Connection!con.OpenCompanyConnection
+
+F.Intrinsic.Control.CallSub(Createordshipto)
+
+F.Intrinsic.String.Build("{0}\gss.ico",V.Caller.InstallDir,V.Local.sIcon)
+Gui.frmQuoteUpdate..Icon(V.Local.sIcon)
+Gui.frmQuoteUpdate..Show
+Gui.frmQuoteUpdate.txtQuoteNo.SetFocus
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.cmdCustBrws_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdCustBrws_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+'Browser to select the new customer
+
+F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+'	F.Intrinsic.UI.Msgbox("No Customer Selected","Customer Browser")
+F.Intrinsic.Control.Else
+	V.Global.sNewCustomer.Set(V.Local.sRet(0))
+	Gui.frmQuoteUpdate.txtNewCust.Text(V.Global.sNewCustomer)
+	
+	F.Intrinsic.String.Build("SELECT CUSTOMER FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{0}';",V.Global.sNewCustomer,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"")
+		Gui.frmQuoteUpdate.txtNewShipTo.Text("")
+		Gui.frmQuoteUpdate.txtNewShipTo.Enabled(False)
+		Gui.frmQuoteUpdate.cmdShipTo.Enabled(False)
+	F.Intrinsic.Control.Else
+		Gui.frmQuoteUpdate.txtNewShipTo.Enabled(True)
+		Gui.frmQuoteUpdate.cmdShipTo.Enabled(True)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdCustBrws_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdCustBrws_click.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+V.Local.sMsg.Declare(String)
+V.Local.iRet.Declare(Long)
+
+'Update another Quote or close the program
+
+F.Intrinsic.String.Build("Quote Update is complete.{0}{0}Do you want to update another Quote? ",V.Ambient.NewLine,V.Local.sMsg)
+F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Quote Customer Update",4,V.Local.iRet)
+F.Intrinsic.Control.If(V.Local.iRet,=,6)
+	Gui.frmQuoteUpdate.txtQuoteNo.Text("")
+	Gui.frmQuoteUpdate.txtOldCust.Text("")
+	Gui.frmQuoteUpdate.txtNewCust.Text("")
+	Gui.frmQuoteUpdate.txtNewShipTo.Text("")
+	Gui.frmQuoteUpdate..Show
+	Gui.frmQuoteUpdate.txtQuoteNo.SetFocus
+F.Intrinsic.Control.Else
+	F.ODBC.Connection!con.Close
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+Program.Sub.Unload.End
+
+Program.Sub.cmdQuoteNo_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdQuoteNo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+V.Local.sRet.Declare(String)
+V.Local.sQuoteNo.Declare(String)
+V.Local.sOrdCust.Declare(String)
+V.Local.sHeader.Declare(String)
+V.Local.sWidth.Declare(String)
+
+'Browser to select the Quote to update
+
+F.Intrinsic.String.Split("Order Number*!*Customer*!*Ship To*!*Due Date*!*Customer PO","*!*",V.Local.sHeader)
+F.Intrinsic.String.Split("1000*!*1500*!*1000*!*1000*!*1500","*!*",V.Local.sWidth)
+
+F.Intrinsic.UI.Browser("Select Quote:","con","SELECT QUOTE_NO, CUSTOMER, QUOTE_SHIP_ID, DATE_DUE, CUSTOMER_PO FROM V_QUOTE_HEADER ORDER BY QUOTE_NO ASC;",V.Local.sHeader,V.Local.sWidth,V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+'	F.Intrinsic.UI.Msgbox("No Quote was selected","Quote Browser")
+F.Intrinsic.Control.Else
+	V.Global.sQuoteNo.Set(V.Local.sRet(0))
+	Gui.frmQuoteUpdate.txtQuoteNo.Text(V.Global.sQuoteNo)
+	V.Global.sOldCustomer.Set(V.Local.sRet(1))
+	Gui.frmQuoteUpdate.txtOldCust.Text(V.Global.sOldCustomer)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdQuoteNo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdQuoteNo_click.End
+
+Program.Sub.cmdUpdate_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdUpdate_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Update the Customer on the Quote
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sMsg.Declare(String)
+
+F.Intrinsic.String.Build("SELECT SHIP_ID FROM V_QUOTE_HEADER WHERE QUOTE_NO = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Global.sOrdShipToID)
+
+F.Intrinsic.Control.If(V.Global.sQuoteNo,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a Quote","Quote Validation")
+	Gui.frmQuoteUpdate.txtQuoteNo.SetFocus
+F.Intrinsic.Control.Elseif(V.Global.sQuoteNo,<>,"")
+	F.Intrinsic.Control.AndIf(V.Global.sNewCustomer,=,"")
+		F.Intrinsic.UI.Msgbox("Please select a New Customer","New Customer Validation")
+		Gui.frmQuoteUpdate.txtNewCust.SetFocus
+F.Intrinsic.Control.ElseIf(V.Global.sOldCustomer,=,V.Global.sNewCustomer)
+	F.Intrinsic.UI.Msgbox("Customers are the same. No Update.","Validate Customers")
+	Gui.frmQuoteUpdate.txtNewCust.Text("")
+	Gui.frmQuoteUpdate.txtNewCust.SetFocus
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("SELECT LOCK_TYPE,USER_ID FROM X_LOCK_FILE WHERE COMPANY = '{0}' AND LOCK_TYPE = 'QT' AND REC_KEY = '{1}';",V.Caller.CompanyCode,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet(0),<>,"")
+			F.Intrinsic.String.Build("Quote {0} is locked by User ID {1}.",V.Global.sQuoteNo,V.Local.sRet(1),V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Quote Locked")
+			Gui.frmQuoteUpdate.txtQuoteNo.SetFocus
+		F.Intrinsic.Control.Else
+			Gui.frmQuoteUpdate..Visible(0)
+			F.Intrinsic.UI.InvokeWaitDialog("Updating Customer on Quote....","Quote Update")
+				F.Intrinsic.Control.If(V.Global.sOrdShipToID,=,"")
+					F.Intrinsic.Control.AndIf(V.Global.sShipTo,=,"")
+						F.Intrinsic.String.Build("DELETE FROM GCG_6191_QUOTE_SHPTO Where Quote_No = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+						F.ODBC.Connection!con.Execute(V.Local.sSQL)
+						F.Intrinsic.Control.CallSub(UpdateQUOTETbl1)
+				F.Intrinsic.Control.ElseIf(V.Global.sOrdShipToID,<>,"")
+					F.Intrinsic.Control.AndIf(V.Global.sShipTo,=,"")
+						F.Intrinsic.String.Build("DELETE FROM GCG_6191_QUOTE_SHPTO Where Quote_No = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+						F.ODBC.Connection!con.Execute(V.Local.sSQL)
+						F.Intrinsic.Control.CallSub(UpdateQUOTETbl2)
+				F.Intrinsic.Control.ElseIf(V.Global.sShipTo,<>,"")
+					F.Intrinsic.String.Build("DELETE FROM GCG_6191_QUOTE_SHPTO Where Quote_No = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+						F.ODBC.Connection!con.Execute(V.Local.sSQL)
+					F.Intrinsic.Control.CallSub(UpdateQUOTETbl3)
+				F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdUpdate_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdUpdate_click.End
+
+Program.Sub.UpdateQUOTETbl1.Start
+F.Intrinsic.Control.SetErrorHandler("UpdateQUOTETbl1_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Both ShipTo are blank
+
+V.Local.sSQL.Declare(String)
+
+'QUOTE_HEADER
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",20)
+	F.Intrinsic.String.Build("UPDATE QUOTE_HEADER SET CUSTOMER = '{0}', SALESPERSON = (SELECT SALESPERSON FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{0}') WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'A';",V.Global.sNewCustomer,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_BILL_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",40)
+	F.Intrinsic.String.Build("UPDATE QUOTE_BILL_TO SET CUSTOMER = '{0}',",V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER = (SELECT NAME_CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1 = (SELECT ADDRESS1 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2 = (SELECT ADDRESS2 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3 = (SELECT ADDRESS3 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4 = (SELECT ADDRESS4 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5 = (SELECT ADDRESS5 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY = (SELECT CITY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE = (SELECT STATE FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ZIP_CODE = (SELECT ZIP FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY = (SELECT COUNTRY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION = (SELECT ATTENTION FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CONTACT = '', CONTACT_PHONE = '', CONTACT_EMAIL = ''",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'B';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_SHIP_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",60)
+	F.Intrinsic.String.Build("UPDATE QUOTE_SHIP_TO SET CUSTOMER = '{0}',",V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER_SHIP = (SELECT NAME_CUSTOMER_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1_SHIP = (SELECT ADDRESS1_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2_SHIP = (SELECT ADDRESS2_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3_SHIP = (SELECT ADDRESS3_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4_SHIP = (SELECT ADDRESS4_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5_SHIP = (SELECT ADDRESS5_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY_SHIP = (SELECT CITY_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE_SHIP = (SELECT STATE_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CODE_ZIP_SHIP = (SELECT CODE_ZIP_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY_SHIP = (SELECT COUNTRY_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION_SHIP = (SELECT ATTENTION_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} SALESPERSON_SHIP = (SELECT SALESPERSON FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}')",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND LTRIM(RECORD_NO) = 'C';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+'QUOTE_LINES
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",80)
+	F.Intrinsic.String.Build("UPDATE QUOTE_LINES SET CUSTOMER = '{0}' WHERE QUOTE_NO = '{1}' AND RECORD_NO > '0000';",V.Global.sNewCustomer,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",100)
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("UpdateQUOTETbl1_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.UpdateQUOTETbl1.End
+
+Program.Sub.cmdShipTo_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdShipTo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Browser to select Ship To ID
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sHeader.Declare(String)
+V.Local.iWidth.Declare(Long)
+
+F.Intrinsic.String.Split("Ship To ID*!*Customer*!*Address*!*City*!*State*!*ZIP","*!*",V.Local.sHeader)
+F.Intrinsic.String.Split("1000*!*1000*!*4000*!*1000*!*500*!*1000","*!*",V.Local.iWidth)
+
+F.Intrinsic.String.Concat("SELECT SHIP_SEQ, CUSTOMER, Concat (SHIP_ADDRESS1, SHIP_ADDRESS2) AS Address, SHIP_CITY, SHIP_STATE, SHIP_ZIP FROM OE_MULTI_SHIP  WHERE CUSTOMER = '",V.Screen.frmQuoteUpdate!txtNewCust.Text,"' ORDER BY SHIP_SEQ;",V.Local.sSQL)
+F.Intrinsic.UI.Browser("Select Quote:","con",V.Local.sSQL,V.Local.sHeader,V.Local.iWidth,V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+'	F.Intrinsic.UI.Msgbox("No Ship To was selected","Ship To Browser")
+F.Intrinsic.Control.Else
+	V.Global.sShipTo.Set(V.Local.sRet(0))
+	Gui.frmQuoteUpdate.txtNewShipTo.Text(V.Global.sShipTo)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdShipTo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdShipTo_click.End
+
+Program.Sub.UpdateQUOTETbl2.Start
+F.Intrinsic.Control.SetErrorHandler("UpdateQUOTETbl2_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'ShipTo to No ShipTo
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+'QUOTE_HEADER
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",20)
+	F.Intrinsic.String.Build("UPDATE QUOTE_HEADER SET CUSTOMER = '{0}', SHIPTO = '', SALESPERSON = (SELECT SALESPERSON FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{0}') WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'A';",V.Global.sNewCustomer,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_BILL_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",40)
+	F.Intrinsic.String.Build("UPDATE QUOTE_BILL_TO SET CUSTOMER = '{0}',SHIP_ID = '',",V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER = (SELECT NAME_CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1 = (SELECT ADDRESS1 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2 = (SELECT ADDRESS2 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3 = (SELECT ADDRESS3 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4 = (SELECT ADDRESS4 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5 = (SELECT ADDRESS5 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY = (SELECT CITY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE = (SELECT STATE FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ZIP_CODE = (SELECT ZIP FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY = (SELECT COUNTRY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION = (SELECT ATTENTION FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CONTACT = '', CONTACT_PHONE = '', CONTACT_EMAIL = ''",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'B';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_SHIP_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",60)
+	'INSERT_1
+	F.Intrinsic.String.Build("INSERT INTO GCG_6191_QUOTE_SHPTO SELECT Top 1 * FROM QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	'UPDATE
+	F.Intrinsic.String.Build("UPDATE GCG_6191_QUOTE_SHPTO SET CUSTOMER = '{0}', QUOTE_SHIP_ID = '', SHIP_ID = '',",V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER_SHIP = (SELECT NAME_CUSTOMER_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1_SHIP = (SELECT ADDRESS1_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2_SHIP = (SELECT ADDRESS2_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3_SHIP = (SELECT ADDRESS3_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4_SHIP = (SELECT ADDRESS4_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5_SHIP = (SELECT ADDRESS5_SHIP FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY_SHIP = (SELECT CITY_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE_SHIP = (SELECT STATE_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CODE_ZIP_SHIP = (SELECT CODE_ZIP_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY_SHIP = (SELECT COUNTRY_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION_SHIP = (SELECT ATTENTION_SHIP FROM V_CUSTOMER_SHIPTO WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} SALESPERSON_SHIP = (SELECT SALESPERSON FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}')",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND LTRIM(RECORD_NO) = 'C';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	'DELETE
+	F.Intrinsic.String.Build("SELECT QUOTE_NO FROM V_QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+		F.Intrinsic.String.Build("DELETE FROM QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+	'INSERT_2
+	F.Intrinsic.String.Build("INSERT INTO QUOTE_SHIP_TO SELECT * FROM GCG_6191_QUOTE_SHPTO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+'QUOTE_LINES
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",80)
+	F.Intrinsic.String.Build("UPDATE QUOTE_LINES SET CUSTOMER = '{0}', SHIP_ID = '' WHERE QUOTE_NO = '{1}' AND RECORD_NO > '0000';",V.Global.sNewCustomer,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",100)
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("UpdateQUOTETbl2_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.UpdateQUOTETbl2.End
+
+Program.Sub.UpdateQUOTETbl3.Start
+F.Intrinsic.Control.SetErrorHandler("UpdateQUOTETbl3_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'No ShipTo to ShipTo
+'ShipTo to ShipTo
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+'QUOTE_HEADER
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",20)
+	F.Intrinsic.String.Build("UPDATE QUOTE_HEADER SET CUSTOMER = '{0}', SHIPTO = '{2}', SALESPERSON = (SELECT SALESPERSON FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{0}') WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'A';",V.Global.sNewCustomer,V.Global.sQuoteNo,V.Global.sShipTo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_BILL_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",40)
+	F.Intrinsic.String.Build("UPDATE QUOTE_BILL_TO SET CUSTOMER = '{0}',SHIP_ID = '{1}',",V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER = (SELECT NAME_CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1 = (SELECT ADDRESS1 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2 = (SELECT ADDRESS2 FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3 = (SELECT ADDRESS3 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4 = (SELECT ADDRESS4 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5 = (SELECT ADDRESS5 FROM V_CUSTOMER_INTL WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY = (SELECT CITY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE = (SELECT STATE FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ZIP_CODE = (SELECT ZIP FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY = (SELECT COUNTRY FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION = (SELECT ATTENTION FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{1}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CONTACT = '', CONTACT_PHONE = '', CONTACT_EMAIL = ''",V.Local.sSQL,V.Global.sNewCustomer,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND RECORD_TYPE = 'B';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+'QUOTE_SHIP_TO
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",60)
+	'INSERT_1
+	F.Intrinsic.String.Build("INSERT INTO GCG_6191_QUOTE_SHPTO SELECT Top 1 * FROM QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+	'UPDATE
+	F.Intrinsic.String.Build("UPDATE GCG_6191_QUOTE_SHPTO SET CUSTOMER = '{0}', QUOTE_SHIP_ID = ' ', SHIP_ID = '{1}',",V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} NAME_CUSTOMER_SHIP = (SELECT CUSTOMER_NAME FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_1_SHIP = (SELECT SHIP_ADDRESS1 FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_2_SHIP = (SELECT SHIP_ADDRESS2 FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_3_SHIP = (SELECT SHIP_ADDRESS3 FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_4_SHIP = (SELECT SHIP_ADDRESS4 FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ADDRESS_5_SHIP = (SELECT SHIP_ADDRESS5 FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CITY_SHIP = (SELECT SHIP_CITY FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} STATE_SHIP = (SELECT SHIP_STATE FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} CODE_ZIP_SHIP = (SELECT SHIP_ZIP FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} COUNTRY_SHIP = (SELECT SHIP_COUNTRY FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} ATTENTION_SHIP = (SELECT SHIP_ATTENTION FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}'),",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} SALESPERSON_SHIP = (SELECT SHIP_SALESPERSON FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{1}' AND SHIP_SEQ = '{2}')",V.Local.sSQL,V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.Intrinsic.String.Build("{0} WHERE QUOTE_NO = '{1}' AND LTRIM(RECORD_NO) = 'C';",V.Local.sSQL,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	'DELETE
+	F.Intrinsic.String.Build("SELECT QUOTE_NO FROM V_QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+		F.Intrinsic.String.Build("DELETE FROM QUOTE_SHIP_TO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+		F.ODBC.Connection!con.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+	'INSERT_2
+	F.Intrinsic.String.Build("INSERT INTO QUOTE_SHIP_TO SELECT * FROM GCG_6191_QUOTE_SHPTO WHERE QUOTE_NO = '{0}' AND LTRIM(RECORD_NO) = 'C';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+'QUOTE_LINES
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",80)
+	F.Intrinsic.String.Build("UPDATE QUOTE_LINES SET CUSTOMER = '{0}', SHIP_ID = '{1}' WHERE QUOTE_NO = '{2}' AND RECORD_TYPE = 'L';",V.Global.sNewCustomer,V.Global.sShipTo,V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+F.Intrinsic.UI.ChangeWaitStatus("Updating Customer on Quote....",100)
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("UpdateQUOTETbl3_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.UpdateQUOTETbl3.End
+
+Program.Sub.CreateOrdShipTo.Start
+F.Intrinsic.Control.SetErrorHandler("CreateOrdShipTo_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Create Temporary Table to update QUOTE_SHIP_TO when a Ship To ID is selected
+
+V.Local.iHndl.Declare(Long)
+V.Local.bFileExists.Declare(Boolean)
+V.Local.bTableExists.Declare(Boolean)
+V.Local.sFileLoc.Declare(String)
+V.Local.sFileLoc2.Declare(String)
+V.Local.sCreateTables.Declare(String)
+V.Local.sGSVersionCheck.Declare(String)
+
+F.Intrinsic.File.GetHandle(V.Local.iHndl)
+
+'Create batch file to run GSSCompare to create Temp Table
+F.Intrinsic.String.Build("{0}\GCG_6191_QUOTE_SHPTO.bat",V.Caller.ScriptsDir,V.Local.sFileLoc)
+F.ODBC.Connection!con.TableExists("GCG_6191_QUOTE_SHPTO",V.Local.bTableExists)
+
+'Create a version check file
+F.Intrinsic.String.Build("{0}\GAB\GAS\GCG_6191_Quote_CustomerChangeCheck.txt",V.Caller.PluginsDir,V.Local.sFileLoc2)
+F.Intrinsic.File.Exists(V.Local.sFileLoc2,V.Local.bFileExists)
+
+F.Intrinsic.Control.If(V.Local.bFileExists,=,False)
+	F.Intrinsic.File.String2File(V.Local.sFileLoc2,V.Caller.GSSVersion)
+		F.Intrinsic.Control.If(V.Local.bTableExists,=,False)
+			F.Intrinsic.String.Build("{0}\GSSCOMPARE.EXE #C{1} #V{2} #TQUOTE_SHIP_TO $DB0 #DGCG_6191_QUOTE_SHPTO",V.Caller.PluginsDir,V.Caller.CompanyCode,V.Caller.GSSVersion,V.Local.sCreateTables)
+			F.Intrinsic.File.String2File(V.Local.sFileLoc,V.Local.sCreateTables)
+		F.Intrinsic.Control.Else
+			F.ODBC.Connection!con.Execute("DROP TABLE GCG_6191_QUOTE_SHPTO;")
+			F.Intrinsic.String.Build("{0}\GSSCOMPARE.EXE #C{1} #V{2} #TQUOTE_SHIP_TO $DB0 #DGCG_6191_QUOTE_SHPTO",V.Caller.PluginsDir,V.Caller.CompanyCode,V.Caller.GSSVersion,V.Local.sCreateTables)
+			F.Intrinsic.File.String2File(V.Local.sFileLoc,V.Local.sCreateTables)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Task.ShellExec(V.Local.iHndl,"Open",V.Local.sFileLoc,"","",1)
+	F.Intrinsic.UI.Msgbox("This is a one time run for the creation of a custom table. After, GSSCompare runs click OK to continue.","One Time Run Setup")
+	F.Intrinsic.File.DeleteFile(V.Local.sFileLoc)
+F.Intrinsic.Control.Else
+	F.Intrinsic.File.File2String(V.Local.sFileLoc2,V.Local.sGSVersionCheck)
+		F.Intrinsic.Control.If(V.Local.sGSVersionCheck,<>,V.Caller.GSSVersion)
+			F.Intrinsic.File.String2File(V.Local.sFileLoc2,V.Caller.GSSVersion)
+				F.Intrinsic.Control.If(V.Local.bTableExists,=,False)
+					F.Intrinsic.String.Build("{0}\GSSCOMPARE.EXE #C{1} #V{2} #TQUOTE_SHIP_TO $DB0 #DGCG_6191_QUOTE_SHPTO",V.Caller.PluginsDir,V.Caller.CompanyCode,V.Caller.GSSVersion,V.Local.sCreateTables)
+					F.Intrinsic.File.String2File(V.Local.sFileLoc,V.Local.sCreateTables)
+				F.Intrinsic.Control.Else
+					F.ODBC.Connection!con.Execute("DROP TABLE GCG_6191_QUOTE_SHPTO;")
+					F.Intrinsic.String.Build("{0}\GSSCOMPARE.EXE #C{1} #V{2} #TQUOTE_SHIP_TO $DB0 #DGCG_6191_QUOTE_SHPTO",V.Caller.PluginsDir,V.Caller.CompanyCode,V.Caller.GSSVersion,V.Local.sCreateTables)
+					F.Intrinsic.File.String2File(V.Local.sFileLoc,V.Local.sCreateTables)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Task.ShellExec(V.Local.iHndl,"Open",V.Local.sFileLoc,"","",1)
+			F.Intrinsic.UI.Msgbox("Checking custom table for updates. After, GSSCompare runs click OK to continue.","Global Shop Version Changed:")
+			F.Intrinsic.File.DeleteFile(V.Local.sFileLoc)
+		F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CreateOrdShipTo_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CreateOrdShipTo.End
+
+Program.Sub.Unload_Form.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Form_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Form_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+Program.Sub.Unload_Form.End
+
+Program.Sub.txtNewCust_LostFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtNewCust_LostFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Validate the Customer selected
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Global.sNewCustomer.Set(V.Screen.frmQuoteUpdate!txtNewCust.Text)
+
+F.Intrinsic.Control.If(V.Global.sNewCustomer,<>,"")
+	F.Intrinsic.String.Build("SELECT CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '{0}';",V.Global.sNewCustomer,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+
+	F.Intrinsic.Control.If(V.Local.sRet,=,"")
+		F.Intrinsic.UI.Msgbox("The Customer entered is invalid","Customer Validation")
+		Gui.frmQuoteUpdate.txtNewCust.Text("")
+		Gui.frmQuoteUpdate.txtNewCust.SetFocus
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("SELECT CUSTOMER FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{0}';",V.Global.sNewCustomer,V.Local.sSQL)
+		F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,=,"")
+			Gui.frmQuoteUpdate.txtNewShipTo.Enabled(False)
+			Gui.frmQuoteUpdate.cmdShipTo.Enabled(False)
+		F.Intrinsic.Control.Else
+			Gui.frmQuoteUpdate.txtNewShipTo.Enabled(True)
+			Gui.frmQuoteUpdate.cmdShipTo.Enabled(True)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtNewCust_LostFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtNewCust_LostFocus.End
+
+Program.Sub.txtOrdNo_LostFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtOrdNo_LostFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Validate the Quote entered is an active Quote
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Global.sQuoteNo.Set(V.Screen.frmQuoteUpdate!txtQuoteNo.Text)
+
+F.Intrinsic.Control.If(V.Global.sQuoteNo,<>,"")
+	F.Intrinsic.String.Build("SELECT QUOTE_NO, CUSTOMER FROM V_QUOTE_HEADER WHERE QUOTE_NO = '{0}';",V.Global.sQuoteNo,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+
+	F.Intrinsic.Control.If(V.Local.sRet(0),=,"")
+		F.Intrinsic.UI.Msgbox("The Quote entered is invalid","Quote Validation")
+		Gui.frmQuoteUpdate.txtQuoteNo.Text("")
+		Gui.frmQuoteUpdate.txtOldCust.Text("")
+		Gui.frmQuoteUpdate.txtQuoteNo.SetFocus
+	F.Intrinsic.Control.Else
+		V.Global.sOldCustomer.Set(V.Local.sRet(1))
+		Gui.frmQuoteUpdate.txtOldCust.Text(V.Global.sOldCustomer)
+		Gui.frmQuoteUpdate.txtQuoteNo.Text(V.Global.sQuoteNo)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtOrdNo_LostFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtOrdNo_LostFocus.End
+
+Program.Sub.txtShipTo_LostFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txtShipTo_LostFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String,"")
+'Validate the Ship To entered is an active Ship To ID
+
+V.Local.sSQL.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Global.sShipTo.Set(V.Screen.frmQuoteUpdate!txtNewShipTo.Text)
+
+F.Intrinsic.Control.If(V.Global.sShipTo,<>,"")
+	F.Intrinsic.String.Build("SELECT CUSTOMER, SHIP_SEQ FROM V_OE_MULTI_SHIP WHERE CUSTOMER = '{0}' AND SHIP_SEQ = '{1}';",V.Global.sNewCustomer,V.Global.sShipTo,V.Local.sSQL)
+	F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+
+	F.Intrinsic.Control.If(V.Local.sRet(0),=,"")
+		F.Intrinsic.UI.Msgbox("The Ship To entered is invalid","Ship To Validation")
+		Gui.frmQuoteUpdate.txtNewShipTo.Text("")
+		Gui.frmQuoteUpdate.txtNewShipTo.SetFocus
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtShipTo_LostFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.String.Build("Project: GCG_6191_Quote_CustomerChange.g2u {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.NewLine,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.txtShipTo_LostFocus.End
+
+Program.Sub.Comments.Start
+${$0$}$Create_and_move_data$}$SUPERVSR$}$03/10/2014$}$False
+Program.Sub.Comments.End
